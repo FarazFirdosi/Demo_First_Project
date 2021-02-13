@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet2">
+    <Query>
+      <DataSourceReference>DataSource1</DataSourceReference>
+      <CommandText>SELECT        Store_Acceptance.IMR_No, CONVERT(varchar, Store_Acceptance.IMR_Date, 105) AS IMR_Date, Store_Acceptance.Supplier_Name, Store_Acceptance.InvoiceNo, Store_Acceptance.InvoiceDescription, CONVERT(varchar, 
+                         Store_Acceptance.Invoice_Date, 105) AS Invoice_Date, Store_Acceptance.Amount_Gross AS InvoiceAmount, CONVERT(varchar, Store_Acceptance.Acceptance_Date, 105) AS AcceptedAtStoreDate, 
+                         CASE WHEN Store_Acceptance.RejectionStatus = 0 THEN 'Not Rejected at Store' ELSE 'Rejected at Store' END AS RejectionStatusAtStore, Store_Rejection.RejectedBy AS RejectedByStorePersonnel, CONVERT(varchar, 
+                         Store_Rejection.RejectionDate, 105) AS RejectedOnDateByStore, Store_Rejection.Remarks AS RejectionRemarksByStore, BTM_Master.UserDepartment_Name AS BillForDepartment, BTM_Master.Po_No, CONVERT(varchar, 
+                         BTM_Master.OrderRec_Date, 105) AS OrderReceivingDate, BTM_Master.InvoiceSend_Pur AS SentToDepartment, CONVERT(varchar, BTM_Master.SentDate, 105) AS SentDate, 
+                         Purchase_AcceptanceT.Accepted_By AS AcceptedByAtPurchase, CONVERT(varchar, Purchase_AcceptanceT.Acceptance_Date, 105) AS AcceptanceDateAtPurchase, 
+                         Purchase_AcceptanceT.Alter_Amount_Gross AS AmountRectifiedAtPurchase, Purchase_AcceptanceT.Alter_Comment AS CommentsByPurchasePersonnel, 
+                         CASE WHEN Purchase_AcceptanceT.RejectionStatus = 0 THEN 'Not Rejected at Purchase' WHEN Purchase_AcceptanceT.RejectionStatus = 1 THEN 'Rejected at Purchase' ELSE 'Pending Status' END AS RejectionStatusAtPurchase,
+                          Purchase_Rejection.RejectedBy AS RejecetedByPurchasePersonnel, Purchase_AcceptanceT.Concern_Person_Name, CONVERT(varchar, Purchase_Rejection.RejectionDate, 105) AS RejectionDate, 
+                         Purchase_AcceptanceT.SendToProcess AS Sent_To_Accounts, Purchase_Rejection.Remarks AS PurchasePersonnelRemarks, Account_Acceptance.Accepted_By AS AcceptedByAccountsPersonnel, CONVERT(varchar, 
+                         Account_Acceptance.Acceptance_Date, 105) AS AccountsAcceptanceDate, 
+                         CASE WHEN Account_Acceptance.RejectionStatus = 0 THEN 'Not Rejected at Accounts' WHEN Account_Acceptance.RejectionStatus = 1 THEN 'Rejected at Accounts' ELSE 'Pending Status' END AS RejectedByAccounts, 
+                         Account_Rejection.RejectedBy, CONVERT(varchar, Account_Rejection.RejectionDate, 105) AS RejecetionDateAtAccounts, Account_Rejection.Remarks, Account_Acceptance.Alter_Amount_Gross AS AmountChangedAtAccounts, 
+                         Account_Acceptance.Alter_Amount_Comment, Account_Acceptance.JDE_Batch_No, CONVERT(varchar, Account_Acceptance.JDE_Batch_Date, 105) AS JDE_BATCH_DATE, Account_Acceptance.Comment, CONVERT(varchar, 
+                         Account_Acceptance.Process_Completion_Date, 105) AS Process_Completed_On
+FROM            Store_Acceptance FULL OUTER JOIN
+                         Store_Rejection ON Store_Acceptance.IMR_No = Store_Rejection.IMR_No FULL OUTER JOIN
+                         BTM_Master ON BTM_Master.IMR_No = Store_Acceptance.IMR_No FULL OUTER JOIN
+                         Purchase_AcceptanceT ON Store_Acceptance.IMR_No = Purchase_AcceptanceT.IMR_No FULL OUTER JOIN
+                         Purchase_Rejection ON Store_Acceptance.IMR_No = Purchase_Rejection.IMR_No FULL OUTER JOIN
+                         Account_Acceptance ON Store_Acceptance.IMR_No = Account_Acceptance.IMR_No FULL OUTER JOIN
+                         Account_Rejection ON Store_Acceptance.IMR_No = Account_Rejection.IMR_No</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="IMR_No">
+        <DataField>IMR_No</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="IMR_Date">
+        <DataField>IMR_Date</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Supplier_Name">
+        <DataField>Supplier_Name</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="InvoiceNo">
+        <DataField>InvoiceNo</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="InvoiceDescription">
+        <DataField>InvoiceDescription</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Invoice_Date">
+        <DataField>Invoice_Date</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="InvoiceAmount">
+        <DataField>InvoiceAmount</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="AcceptedAtStoreDate">
+        <DataField>AcceptedAtStoreDate</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="RejectionStatusAtStore">
+        <DataField>RejectionStatusAtStore</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="RejectedByStorePersonnel">
+        <DataField>RejectedByStorePersonnel</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="RejectedOnDateByStore">
+        <DataField>RejectedOnDateByStore</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="RejectionRemarksByStore">
+        <DataField>RejectionRemarksByStore</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="BillForDepartment">
+        <DataField>BillForDepartment</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Po_No">
+        <DataField>Po_No</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="OrderReceivingDate">
+        <DataField>OrderReceivingDate</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="SentToDepartment">
+        <DataField>SentToDepartment</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="SentDate">
+        <DataField>SentDate</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="AcceptedByAtPurchase">
+        <DataField>AcceptedByAtPurchase</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="AcceptanceDateAtPurchase">
+        <DataField>AcceptanceDateAtPurchase</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="AmountRectifiedAtPurchase">
+        <DataField>AmountRectifiedAtPurchase</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="CommentsByPurchasePersonnel">
+        <DataField>CommentsByPurchasePersonnel</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="RejectionStatusAtPurchase">
+        <DataField>RejectionStatusAtPurchase</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="RejecetedByPurchasePersonnel">
+        <DataField>RejecetedByPurchasePersonnel</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Concern_Person_Name">
+        <DataField>Concern_Person_Name</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="RejectionDate">
+        <DataField>RejectionDate</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Sent_To_Accounts">
+        <DataField>Sent_To_Accounts</DataField>
+        <rd:TypeName>System.Boolean</rd:TypeName>
+      </Field>
+      <Field Name="PurchasePersonnelRemarks">
+        <DataField>PurchasePersonnelRemarks</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="AcceptedByAccountsPersonnel">
+        <DataField>AcceptedByAccountsPersonnel</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="AccountsAcceptanceDate">
+        <DataField>AccountsAcceptanceDate</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="RejectedByAccounts">
+        <DataField>RejectedByAccounts</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="RejectedBy">
+        <DataField>RejectedBy</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="RejecetionDateAtAccounts">
+        <DataField>RejecetionDateAtAccounts</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Remarks">
+        <DataField>Remarks</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="AmountChangedAtAccounts">
+        <DataField>AmountChangedAtAccounts</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Alter_Amount_Comment">
+        <DataField>Alter_Amount_Comment</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="JDE_Batch_No">
+        <DataField>JDE_Batch_No</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="JDE_BATCH_DATE">
+        <DataField>JDE_BATCH_DATE</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Comment">
+        <DataField>Comment</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Process_Completed_On">
+        <DataField>Process_Completed_On</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

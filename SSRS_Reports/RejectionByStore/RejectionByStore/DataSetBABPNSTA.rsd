@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>DataSource1</DataSourceReference>
+      <CommandText>SELECT        BTM_Master.IMR_No, BTM_Master.IMR_Date, BTM_Master.Supplier_Name, BTM_Master.Supplier_Id, BTM_Master.InvoiceNo, BTM_Master.InvoiceDescription, BTM_Master.Invoice_Date, BTM_Master.Amount_Gross, 
+                         BTM_Master.UserDepartment_Name, BTM_Master.UserDepartment_Id, BTM_Master.Po_No, BTM_Master.OrderRec_Date, BTM_Master.InvoiceSend_Pur, BTM_Master.SentDate, Purchase_AcceptanceT.Accepted_By, 
+                         Purchase_AcceptanceT.Acceptance_Date, Purchase_AcceptanceT.Alter_Amount_Gross, Purchase_AcceptanceT.Alter_Comment, Purchase_AcceptanceT.Concern_Person_Name
+FROM            BTM_Master INNER JOIN
+                         Purchase_AcceptanceT ON BTM_Master.IMR_No = Purchase_AcceptanceT.IMR_No AND Purchase_AcceptanceT.SendToProcess = 1 AND Purchase_AcceptanceT.RejectionStatus = 0</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="IMR_No">
+        <DataField>IMR_No</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="IMR_Date">
+        <DataField>IMR_Date</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="Supplier_Name">
+        <DataField>Supplier_Name</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Supplier_Id">
+        <DataField>Supplier_Id</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="InvoiceNo">
+        <DataField>InvoiceNo</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="InvoiceDescription">
+        <DataField>InvoiceDescription</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Invoice_Date">
+        <DataField>Invoice_Date</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="Amount_Gross">
+        <DataField>Amount_Gross</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="UserDepartment_Name">
+        <DataField>UserDepartment_Name</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="UserDepartment_Id">
+        <DataField>UserDepartment_Id</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Po_No">
+        <DataField>Po_No</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="OrderRec_Date">
+        <DataField>OrderRec_Date</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="InvoiceSend_Pur">
+        <DataField>InvoiceSend_Pur</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="SentDate">
+        <DataField>SentDate</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="Accepted_By">
+        <DataField>Accepted_By</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Acceptance_Date">
+        <DataField>Acceptance_Date</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="Alter_Amount_Gross">
+        <DataField>Alter_Amount_Gross</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Alter_Comment">
+        <DataField>Alter_Comment</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Concern_Person_Name">
+        <DataField>Concern_Person_Name</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

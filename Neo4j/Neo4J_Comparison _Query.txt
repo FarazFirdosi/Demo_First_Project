@@ -1,0 +1,21 @@
+Graph Query No.1
+match (m:Movie) return m.released as year, count(*) as total order by year desc;
+Graph Query No.2 Identify how often actors and directors worked together
+MATCH (actor:Person)-[:ACTED_IN]->(movie:Movie)<-[:DIRECTED]-(director:Person)
+RETURN actor,director,count(*) AS collaborations
+Graph Query No. 3
+MATCH (a)-[:ACTED_IN]->(m)<-[:DIRECTED]-(d) RETURN a,m,d LIMIT 10;
+Graph Query No.4
+match (m)-[r]->(n) 
+return m.name, type(r),n.title, n.released
+order by n.released desc;
+Graph No.5 
+MATCH (actor:Person)-[:ACTED_IN]-(film:Movie) WHERE actor.name='Tom Hanks' RETURN actor.name, film.title ;
+Graph No.6
+MATCH (:Movie { title: "Top Gun" })<-[:ACTED_IN]-(actor)-[:ACTED_IN]->(movie)
+RETURN movie.title, collect(actor.name)
+ORDER BY movie.title DESC ;
+Graph No.7
+MATCH (p:Person)-[r:ACTED_IN]->(m:Movie)
+WHERE p.name =~ "K.+" OR m.released > 2000 OR "Neo" IN r.roles
+RETURN p,r,m

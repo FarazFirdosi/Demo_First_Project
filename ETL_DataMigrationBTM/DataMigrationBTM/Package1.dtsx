@@ -1,0 +1,620 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/7/2021 12:07:41 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="DESKTOP-DQ8S6PF"
+  DTS:CreatorName="DESKTOP-DQ8S6PF\Khushi"
+  DTS:DTSID="{1B13DC1A-09CF-47FA-985C-53EC0F384591}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.5583.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{41620FAC-F4B5-450E-BCA6-34FBF14ADABE}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[.\khushi.btm]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{338FBD59-6186-4FCF-91FB-D6B03AD4F342}"
+      DTS:ObjectName=".\khushi.btm">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.\khushi;Initial Catalog=btm;Integrated Security=True;Application Name=SSIS-Package1-{338FBD59-6186-4FCF-91FB-D6B03AD4F342}.\khushi.btm;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{2299DE76-4062-480F-A200-F4BB6E2B1495}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Khushi\Desktop\Ayush_solution\UserTable.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\UserTable Flow Task"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{7D3FDC07-DF4D-43CB-BD57-C75D017DEF58}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="UserTable Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\UserTable Flow Task\ADO NET Destination"
+              componentClassID="{874F7595-FB5F-40FF-96AF-FBFF8250E3EF}"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="ADO NET Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version= 11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">"dbo"."UserTable"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.SqlServer.Dts.Pipeline.ADONETDestination, Microsoft.SqlServer.ADONETDest, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\UserTable Flow Task\ADO NET Destination.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[.\khushi.btm]"
+                  connectionManagerRefId="Package.ConnectionManagers[.\khushi.btm]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[SNo]"
+                      cachedDataType="r8"
+                      cachedName="SNo"
+                      externalMetadataColumnId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[SNo]"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[SNo]" />
+                    <inputColumn
+                      refId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[User_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="User_Name"
+                      externalMetadataColumnId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[User_Name]"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[User_Name]" />
+                    <inputColumn
+                      refId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Employee_Id]"
+                      cachedDataType="r8"
+                      cachedName="Employee_Id"
+                      externalMetadataColumnId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Employee_Id]"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Employee_Id]" />
+                    <inputColumn
+                      refId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Department_From]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Department_From"
+                      externalMetadataColumnId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Department_From]"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Department_From]" />
+                    <inputColumn
+                      refId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Login_Id]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Login_Id"
+                      externalMetadataColumnId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Login_Id]"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Login_Id]" />
+                    <inputColumn
+                      refId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Password]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Password"
+                      externalMetadataColumnId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Password]"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Password]" />
+                    <inputColumn
+                      refId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Store]"
+                      cachedDataType="r8"
+                      cachedName="Store"
+                      externalMetadataColumnId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Store]"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Store]" />
+                    <inputColumn
+                      refId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Purchase]"
+                      cachedDataType="r8"
+                      cachedName="Purchase"
+                      externalMetadataColumnId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Purchase]"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Purchase]" />
+                    <inputColumn
+                      refId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Account]"
+                      cachedDataType="r8"
+                      cachedName="Account"
+                      externalMetadataColumnId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Account]"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Account]" />
+                    <inputColumn
+                      refId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Service_Generator]"
+                      cachedDataType="r8"
+                      cachedName="Service_Generator"
+                      externalMetadataColumnId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Service_Generator]"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Service_Generator]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[SNo]"
+                      dataType="i4"
+                      name="SNo" />
+                    <externalMetadataColumn
+                      refId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[User_Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="User_Name" />
+                    <externalMetadataColumn
+                      refId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Employee_Id]"
+                      dataType="wstr"
+                      length="50"
+                      name="Employee_Id" />
+                    <externalMetadataColumn
+                      refId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Department_From]"
+                      dataType="wstr"
+                      length="50"
+                      name="Department_From" />
+                    <externalMetadataColumn
+                      refId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Login_Id]"
+                      dataType="wstr"
+                      length="50"
+                      name="Login_Id" />
+                    <externalMetadataColumn
+                      refId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Password]"
+                      dataType="wstr"
+                      length="50"
+                      name="Password" />
+                    <externalMetadataColumn
+                      refId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Store]"
+                      dataType="bool"
+                      name="Store" />
+                    <externalMetadataColumn
+                      refId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Purchase]"
+                      dataType="bool"
+                      name="Purchase" />
+                    <externalMetadataColumn
+                      refId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Account]"
+                      dataType="bool"
+                      name="Account" />
+                    <externalMetadataColumn
+                      refId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Service_Generator]"
+                      dataType="bool"
+                      name="Service_Generator" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\UserTable Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UserTable Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UserTable Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UserTable Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UserTable Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\UserTable Flow Task\Excel Source"
+              componentClassID="{8C084929-27D1-479F-9641-ABB7CDADF1AC}"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">UserTable$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\UserTable Flow Task\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[SNo]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[SNo]"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[SNo]"
+                      name="SNo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[User_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[User_Name]"
+                      length="255"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[User_Name]"
+                      name="User_Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Employee_Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Employee_Id]"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Employee_Id]"
+                      name="Employee_Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Department_From]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Department_From]"
+                      length="255"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Department_From]"
+                      name="Department_From"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Login_Id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Login_Id]"
+                      length="255"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Login_Id]"
+                      name="Login_Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Password]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Password]"
+                      length="255"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Password]"
+                      name="Password"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Store]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Store]"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Store]"
+                      name="Store"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Purchase]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Purchase]"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Purchase]"
+                      name="Purchase"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Account]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Account]"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Account]"
+                      name="Account"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Service_Generator]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Service_Generator]"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Service_Generator]"
+                      name="Service_Generator"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[SNo]"
+                      dataType="r8"
+                      name="SNo" />
+                    <externalMetadataColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[User_Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="User_Name" />
+                    <externalMetadataColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Employee_Id]"
+                      dataType="r8"
+                      name="Employee_Id" />
+                    <externalMetadataColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Department_From]"
+                      dataType="wstr"
+                      length="255"
+                      name="Department_From" />
+                    <externalMetadataColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Login_Id]"
+                      dataType="wstr"
+                      length="255"
+                      name="Login_Id" />
+                    <externalMetadataColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Password]"
+                      dataType="wstr"
+                      length="255"
+                      name="Password" />
+                    <externalMetadataColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Store]"
+                      dataType="r8"
+                      name="Store" />
+                    <externalMetadataColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Purchase]"
+                      dataType="r8"
+                      name="Purchase" />
+                    <externalMetadataColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Account]"
+                      dataType="r8"
+                      name="Account" />
+                    <externalMetadataColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Service_Generator]"
+                      dataType="r8"
+                      name="Service_Generator" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[SNo]"
+                      dataType="r8"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[SNo]"
+                      name="SNo" />
+                    <outputColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[User_Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[User_Name]"
+                      name="User_Name" />
+                    <outputColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Employee_Id]"
+                      dataType="r8"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Employee_Id]"
+                      name="Employee_Id" />
+                    <outputColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Department_From]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Department_From]"
+                      name="Department_From" />
+                    <outputColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Login_Id]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Login_Id]"
+                      name="Login_Id" />
+                    <outputColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Password]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Password]"
+                      name="Password" />
+                    <outputColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Store]"
+                      dataType="r8"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Store]"
+                      name="Store" />
+                    <outputColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Purchase]"
+                      dataType="r8"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Purchase]"
+                      name="Purchase" />
+                    <outputColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Account]"
+                      dataType="r8"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Account]"
+                      name="Account" />
+                    <outputColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Service_Generator]"
+                      dataType="r8"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Service_Generator]"
+                      name="Service_Generator" />
+                    <outputColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\UserTable Flow Task.Paths[Excel Source Output]"
+              endId="Package\UserTable Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              name="Excel Source Output"
+              startId="Package\UserTable Flow Task\Excel Source.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="176,42"
+          Id="Package\UserTable Flow Task"
+          TopLeft="56,40" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\UserTable Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="139,42"
+          Id="Package\UserTable Flow Task\Excel Source"
+          TopLeft="179,72" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\UserTable Flow Task\ADO NET Destination"
+          TopLeft="171,150" />
+        <EdgeLayout
+          Id="Package\UserTable Flow Task.Paths[Excel Source Output]"
+          TopLeft="248.5,114">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12,36"
+              Start="0,0"
+              End="12,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14"
+                    Point2="0,18"
+                    Point3="4,18" />
+                  <mssgle:LineSegment
+                    End="8,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8,18"
+                    Point2="12,18"
+                    Point3="12,22" />
+                  <mssgle:LineSegment
+                    End="12,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\UserTable Flow Task\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\UserTable Flow Task\ADO NET Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

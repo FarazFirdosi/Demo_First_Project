@@ -1,0 +1,673 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/7/2021 12:02:23 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="DESKTOP-DQ8S6PF"
+  DTS:CreatorName="DESKTOP-DQ8S6PF\Khushi"
+  DTS:DTSID="{1AFD91F8-0C2C-45C6-AAF0-C716975654BE}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.5583.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{DD6BADE7-BF28-41E8-BD3D-D9EB8DD3D180}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[.\khushi.btm]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{3C01CF39-4FAE-4A39-BC25-E3083009BB9B}"
+      DTS:ObjectName=".\khushi.btm">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.\khushi;Initial Catalog=btm;Integrated Security=True;Application Name=SSIS-Package-{3C01CF39-4FAE-4A39-BC25-E3083009BB9B}.\khushi.btm;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{13053581-B935-4807-AA8A-9D4F49A06576}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Khushi\Desktop\Ayush_solution\SupplierMaster.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SupplirMaster Source Flow Task"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{82CFD5A1-3EAF-43FE-BB27-A0B77D370B81}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SupplirMaster Source Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\SupplirMaster Source Flow Task\ADO NET Destination"
+              componentClassID="{874F7595-FB5F-40FF-96AF-FBFF8250E3EF}"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="ADO NET Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version= 11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">"dbo"."SupplierMaster"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.SqlServer.Dts.Pipeline.ADONETDestination, Microsoft.SqlServer.ADONETDest, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[.\khushi.btm]"
+                  connectionManagerRefId="Package.ConnectionManagers[.\khushi.btm]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Supplier_Id]"
+                      cachedDataType="r8"
+                      cachedName="Supplier_Id"
+                      externalMetadataColumnId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Supplier_Id]"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Supplier_Id]" />
+                    <inputColumn
+                      refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Supplier_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Supplier_Name"
+                      externalMetadataColumnId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Supplier_Name]"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Supplier_Name]" />
+                    <inputColumn
+                      refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Supplier_Org]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Supplier_Org"
+                      externalMetadataColumnId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Supplier_Org]"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Supplier_Org]" />
+                    <inputColumn
+                      refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[ServiceTax_No]"
+                      cachedDataType="r8"
+                      cachedName="ServiceTax_No"
+                      externalMetadataColumnId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ServiceTax_No]"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[ServiceTax_No]" />
+                    <inputColumn
+                      refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[PanCard_No]"
+                      cachedDataType="r8"
+                      cachedName="PanCard_No"
+                      externalMetadataColumnId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[PanCard_No]"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[PanCard_No]" />
+                    <inputColumn
+                      refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Address]"
+                      cachedDataType="r8"
+                      cachedName="Address"
+                      externalMetadataColumnId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Address]"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Address]" />
+                    <inputColumn
+                      refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Phone_No1]"
+                      cachedDataType="r8"
+                      cachedName="Phone_No1"
+                      externalMetadataColumnId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Phone_No1]"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Phone_No1]" />
+                    <inputColumn
+                      refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Phone_No2]"
+                      cachedDataType="r8"
+                      cachedName="Phone_No2"
+                      externalMetadataColumnId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Phone_No2]"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Phone_No2]" />
+                    <inputColumn
+                      refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[ContactPerson1]"
+                      cachedDataType="r8"
+                      cachedName="ContactPerson1"
+                      externalMetadataColumnId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ContactPerson1]"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[ContactPerson1]" />
+                    <inputColumn
+                      refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[ContactPerson2]"
+                      cachedDataType="r8"
+                      cachedName="ContactPerson2"
+                      externalMetadataColumnId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ContactPerson2]"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[ContactPerson2]" />
+                    <inputColumn
+                      refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[ContactPerson3]"
+                      cachedDataType="r8"
+                      cachedName="ContactPerson3"
+                      externalMetadataColumnId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ContactPerson3]"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[ContactPerson3]" />
+                    <inputColumn
+                      refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Sno]"
+                      cachedDataType="r8"
+                      cachedName="Sno"
+                      externalMetadataColumnId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Sno]"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Sno]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Supplier_Id]"
+                      dataType="i4"
+                      name="Supplier_Id" />
+                    <externalMetadataColumn
+                      refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Supplier_Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Supplier_Name" />
+                    <externalMetadataColumn
+                      refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Supplier_Org]"
+                      dataType="wstr"
+                      length="100"
+                      name="Supplier_Org" />
+                    <externalMetadataColumn
+                      refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ServiceTax_No]"
+                      dataType="wstr"
+                      length="50"
+                      name="ServiceTax_No" />
+                    <externalMetadataColumn
+                      refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[PanCard_No]"
+                      dataType="wstr"
+                      length="50"
+                      name="PanCard_No" />
+                    <externalMetadataColumn
+                      refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Address]"
+                      dataType="wstr"
+                      length="100"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Phone_No1]"
+                      dataType="wstr"
+                      length="13"
+                      name="Phone_No1" />
+                    <externalMetadataColumn
+                      refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Phone_No2]"
+                      dataType="wstr"
+                      length="13"
+                      name="Phone_No2" />
+                    <externalMetadataColumn
+                      refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ContactPerson1]"
+                      dataType="wstr"
+                      length="50"
+                      name="ContactPerson1" />
+                    <externalMetadataColumn
+                      refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ContactPerson2]"
+                      dataType="wstr"
+                      length="50"
+                      name="ContactPerson2" />
+                    <externalMetadataColumn
+                      refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ContactPerson3]"
+                      dataType="wstr"
+                      length="50"
+                      name="ContactPerson3" />
+                    <externalMetadataColumn
+                      refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Sno]"
+                      dataType="i4"
+                      name="Sno" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\SupplirMaster Source Flow Task\Excel Source"
+              componentClassID="{8C084929-27D1-479F-9641-ABB7CDADF1AC}"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">SupplierMaster$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\SupplirMaster Source Flow Task\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Supplier_Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Supplier_Id]"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Supplier_Id]"
+                      name="Supplier_Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Supplier_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Supplier_Name]"
+                      length="255"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Supplier_Name]"
+                      name="Supplier_Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Supplier_Org]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Supplier_Org]"
+                      length="255"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Supplier_Org]"
+                      name="Supplier_Org"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[ServiceTax_No]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[ServiceTax_No]"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[ServiceTax_No]"
+                      name="ServiceTax_No"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[PanCard_No]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[PanCard_No]"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[PanCard_No]"
+                      name="PanCard_No"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Address]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Address]"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Address]"
+                      name="Address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Phone_No1]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Phone_No1]"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Phone_No1]"
+                      name="Phone_No1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Phone_No2]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Phone_No2]"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Phone_No2]"
+                      name="Phone_No2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[ContactPerson1]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[ContactPerson1]"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[ContactPerson1]"
+                      name="ContactPerson1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[ContactPerson2]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[ContactPerson2]"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[ContactPerson2]"
+                      name="ContactPerson2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[ContactPerson3]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[ContactPerson3]"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[ContactPerson3]"
+                      name="ContactPerson3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Sno]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Sno]"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Sno]"
+                      name="Sno"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Supplier_Id]"
+                      dataType="r8"
+                      name="Supplier_Id" />
+                    <externalMetadataColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Supplier_Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Supplier_Name" />
+                    <externalMetadataColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Supplier_Org]"
+                      dataType="wstr"
+                      length="255"
+                      name="Supplier_Org" />
+                    <externalMetadataColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[ServiceTax_No]"
+                      dataType="r8"
+                      name="ServiceTax_No" />
+                    <externalMetadataColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[PanCard_No]"
+                      dataType="r8"
+                      name="PanCard_No" />
+                    <externalMetadataColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Address]"
+                      dataType="r8"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Phone_No1]"
+                      dataType="r8"
+                      name="Phone_No1" />
+                    <externalMetadataColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Phone_No2]"
+                      dataType="r8"
+                      name="Phone_No2" />
+                    <externalMetadataColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[ContactPerson1]"
+                      dataType="r8"
+                      name="ContactPerson1" />
+                    <externalMetadataColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[ContactPerson2]"
+                      dataType="r8"
+                      name="ContactPerson2" />
+                    <externalMetadataColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[ContactPerson3]"
+                      dataType="r8"
+                      name="ContactPerson3" />
+                    <externalMetadataColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Sno]"
+                      dataType="r8"
+                      name="Sno" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Supplier_Id]"
+                      dataType="r8"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Supplier_Id]"
+                      name="Supplier_Id" />
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Supplier_Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Supplier_Name]"
+                      name="Supplier_Name" />
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Supplier_Org]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Supplier_Org]"
+                      name="Supplier_Org" />
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ServiceTax_No]"
+                      dataType="r8"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ServiceTax_No]"
+                      name="ServiceTax_No" />
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[PanCard_No]"
+                      dataType="r8"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[PanCard_No]"
+                      name="PanCard_No" />
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Address]"
+                      dataType="r8"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Address]"
+                      name="Address" />
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Phone_No1]"
+                      dataType="r8"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Phone_No1]"
+                      name="Phone_No1" />
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Phone_No2]"
+                      dataType="r8"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Phone_No2]"
+                      name="Phone_No2" />
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ContactPerson1]"
+                      dataType="r8"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ContactPerson1]"
+                      name="ContactPerson1" />
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ContactPerson2]"
+                      dataType="r8"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ContactPerson2]"
+                      name="ContactPerson2" />
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ContactPerson3]"
+                      dataType="r8"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ContactPerson3]"
+                      name="ContactPerson3" />
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Sno]"
+                      dataType="r8"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Sno]"
+                      name="Sno" />
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\SupplirMaster Source Flow Task.Paths[Excel Source Output]"
+              endId="Package\SupplirMaster Source Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              name="Excel Source Output"
+              startId="Package\SupplirMaster Source Flow Task\Excel Source.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="229,42"
+          Id="Package\SupplirMaster Source Flow Task"
+          TopLeft="151,51" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\SupplirMaster Source Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="139,42"
+          Id="Package\SupplirMaster Source Flow Task\Excel Source"
+          TopLeft="154,51" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\SupplirMaster Source Flow Task\ADO NET Destination"
+          TopLeft="143,151" />
+        <EdgeLayout
+          Id="Package\SupplirMaster Source Flow Task.Paths[Excel Source Output]"
+          TopLeft="223.5,93">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9,58"
+              Start="0,0"
+              End="9,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25"
+                    Point2="0,29"
+                    Point3="4,29" />
+                  <mssgle:LineSegment
+                    End="5,29" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5,29"
+                    Point2="9,29"
+                    Point3="9,33" />
+                  <mssgle:LineSegment
+                    End="9,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SupplirMaster Source Flow Task\ADO NET Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SupplirMaster Source Flow Task\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="DataSourceStoresRejection">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=.;Initial Catalog=btm</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>38f635e0-934c-498a-ae84-564d4d34b2ec</DataSourceID>
+</RptDataSource>

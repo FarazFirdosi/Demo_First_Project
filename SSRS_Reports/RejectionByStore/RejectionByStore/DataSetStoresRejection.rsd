@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>DataSource1</DataSourceReference>
+      <CommandText>SELECT        Store_Acceptance.IMR_No, Store_Acceptance.IMR_Date, Store_Acceptance.Supplier_Name, Store_Acceptance.Supplier_Id, Store_Acceptance.InvoiceNo, Store_Acceptance.InvoiceDescription, Store_Acceptance.Invoice_Date, 
+                         Store_Acceptance.Amount_Gross, Store_Acceptance.Accepted_By, Store_Acceptance.Acceptance_Date, Store_Acceptance.SendToProcess, Store_Acceptance.RejectionStatus, Store_Rejection.RejectedBy, 
+                         Store_Rejection.RejectionDate, Store_Rejection.Remarks
+FROM            Store_Acceptance INNER JOIN
+                         Store_Rejection ON Store_Acceptance.IMR_No = Store_Rejection.IMR_No</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="IMR_No">
+        <DataField>IMR_No</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="IMR_Date">
+        <DataField>IMR_Date</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="Supplier_Name">
+        <DataField>Supplier_Name</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Supplier_Id">
+        <DataField>Supplier_Id</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="InvoiceNo">
+        <DataField>InvoiceNo</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="InvoiceDescription">
+        <DataField>InvoiceDescription</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Invoice_Date">
+        <DataField>Invoice_Date</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="Amount_Gross">
+        <DataField>Amount_Gross</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Accepted_By">
+        <DataField>Accepted_By</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Acceptance_Date">
+        <DataField>Acceptance_Date</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="SendToProcess">
+        <DataField>SendToProcess</DataField>
+        <rd:TypeName>System.Boolean</rd:TypeName>
+      </Field>
+      <Field Name="RejectionStatus">
+        <DataField>RejectionStatus</DataField>
+        <rd:TypeName>System.Boolean</rd:TypeName>
+      </Field>
+      <Field Name="RejectedBy">
+        <DataField>RejectedBy</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="RejectionDate">
+        <DataField>RejectionDate</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="Remarks">
+        <DataField>Remarks</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>
